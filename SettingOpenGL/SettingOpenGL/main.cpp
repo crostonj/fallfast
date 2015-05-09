@@ -16,6 +16,9 @@ void renderScene()
     glUseProgram(program);
 
     glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(GL_TRIANGLES, 3, 3);
+    glDrawArrays(GL_TRIANGLES, 6, 3);
+    glDrawArrays(GL_TRIANGLES, 9, 3);
 
     glutSwapBuffers();
 }
