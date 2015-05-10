@@ -5,28 +5,38 @@
 //http://www.in2gpu.com
 
 #include "Shader_Loader.h"
+#include "GameModel.h"
 using namespace Core;
 
+Models::GameModel* gameModel;
 GLuint program;
 void renderScene() 
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(1.0, 0.0, 0.0, 1.0);
 
+    glBindVertexArray(gameModel->GetModel("triangle1"));
     glUseProgram(program);
-
     glDrawArrays(GL_TRIANGLES, 0, 3);
-    glDrawArrays(GL_TRIANGLES, 3, 3);
-    glDrawArrays(GL_TRIANGLES, 6, 3);
-    glDrawArrays(GL_TRIANGLES, 9, 3);
 
     glutSwapBuffers();
+}
+
+
+void closeCallback()
+{
+
+    std::cout << "GLUT:\t Finished" << std::endl;
+    glutLeaveMainLoop();
 }
 
 
 void init() 
 {
     glEnable(GL_DEPTH_TEST);
+
+    gameModel = new Models::GameModel();
+    gameModel->CreateTriangleModel("triangle1");
 
     //load and compile shaders
     Core::Shader_Loader shaderLoader;
@@ -48,6 +58,7 @@ int main(int argc, char **argv)
     init();
 
     glutDisplayFunc(renderScene);
+    glutCloseFunc(closeCallback);
     glutMainLoop();
     glDeleteProgram(program);
 
