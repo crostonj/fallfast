@@ -74,11 +74,14 @@
     <None Include="Vertex_Shader.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameModel.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Shader_Loader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameModel.h" />
     <ClInclude Include="Shader_Loader.h" />
+    <ClInclude Include="VertexFormat.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
