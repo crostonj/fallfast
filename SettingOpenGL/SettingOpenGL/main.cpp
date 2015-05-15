@@ -25,7 +25,6 @@ void renderScene()
 
 void closeCallback()
 {
-
     std::cout << "GLUT:\t Finished" << std::endl;
     glutLeaveMainLoop();
 }
@@ -35,6 +34,7 @@ void init()
 {
     glEnable(GL_DEPTH_TEST);
 
+    //Create the Triangle before we get into the render scene
     gameModel = new Models::GameModel();
     gameModel->CreateTriangleModel("triangle1");
 
@@ -46,14 +46,12 @@ void init()
 
 int main(int argc, char **argv)
 {
-
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
     glutInitWindowPosition(100, 100);//optional
     glutInitWindowSize(800, 600); //optional
     glutCreateWindow("Dawing my first triangle");
     glewInit();
-
 
     init();
 
